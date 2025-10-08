@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tirangulo4b.Contrato.PentagonoContract
+import com.example.tirangulo4b.Vista.MenuFiguras
 import com.example.tirangulo4b.Presentador.PentagonoPresentador
 import com.example.tirangulo4b.R
 
@@ -27,12 +28,9 @@ class PentagonoVista : AppCompatActivity(), PentagonoContract.Vista {
         val txtl1 = findViewById<EditText>(R.id.ladoPentagono)
         val txtl2 = findViewById<EditText>(R.id.apotemaPentagono)
 
-        val btnRectangulo = findViewById<Button>(R.id.btnRectangulo)
-        val btnCirculo = findViewById<Button>(R.id.btnCirculo)
-        val btnTriangulo = findViewById<Button>(R.id.btnTriangulo)
-
         val btnArea = findViewById<Button>(R.id.btnArea)
         val btnPerimetro = findViewById<Button>(R.id.btnPerimetro)
+        val btnregresar = findViewById<Button>(R.id.regresar)
 
 
         txvRes = findViewById<TextView>(R.id.txtResultado)
@@ -59,34 +57,19 @@ class PentagonoVista : AppCompatActivity(), PentagonoContract.Vista {
             pentagonoPresentador.calcularPerimetroPentagono(base)
         }
 
-        btnCirculo.setOnClickListener {
-            val intent = Intent(this@PentagonoVista, CirculoVista::class.java)
-
-            startActivity(intent)
-            finish()
-        }
-
-        btnTriangulo.setOnClickListener {
-            val intent = Intent(this@PentagonoVista, MainActivity::class.java)
-
-            startActivity(intent)
-            finish()
-        }
-
-        btnRectangulo.setOnClickListener {
-            val intent = Intent(this@PentagonoVista, RectanguloVista::class.java)
-
+        btnregresar.setOnClickListener {
+            val intent = Intent(this, MenuFiguras::class.java)
             startActivity(intent)
             finish()
         }
     }
 
     override fun showAreaPentagono(area: Float) {
-        txvRes.text = "El área del Rectangulo es: ${area}"
+        txvRes.text = "El área del Pentagono es: ${area}"
     }
 
     override fun showPerimetroPentagono(perimetro: Float) {
-        txvRes.text = "El área del Perimetro es: ${perimetro}"
+        txvRes.text = "El Perimetro del pentagono es: ${perimetro}"
     }
 
     override fun showError(smg: String) {

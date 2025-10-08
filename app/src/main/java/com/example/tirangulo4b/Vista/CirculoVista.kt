@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tirangulo4b.Contrato.CirculoContract
+import com.example.tirangulo4b.Vista.MenuFiguras
 import com.example.tirangulo4b.Presentador.CirculoPresentador
 import com.example.tirangulo4b.R
 
@@ -26,12 +27,10 @@ class CirculoVista : AppCompatActivity(), CirculoContract.Vista {
         // Elementos del triángulo
         val txtl1 = findViewById<EditText>(R.id.radioCirculo)
 
-        val btnRectangulo = findViewById<Button>(R.id.btnRectangulo)
-        val btnPentagono = findViewById<Button>(R.id.btnPentagono)
-        val btnTriangulo = findViewById<Button>(R.id.btnTriangulo)
-
         val btnArea = findViewById<Button>(R.id.btnArea)
         val btnPerimetro = findViewById<Button>(R.id.btnPerimetro)
+
+        val btnregresar = findViewById<Button>(R.id.regresar)
 
 
         txvRes = findViewById<TextView>(R.id.txtResultado)
@@ -56,34 +55,19 @@ class CirculoVista : AppCompatActivity(), CirculoContract.Vista {
             circuloPresentador.calcularPerimetroCirculo(radio)
         }
 
-        btnRectangulo.setOnClickListener {
-            val intent = Intent(this@CirculoVista, RectanguloVista::class.java)
-
-            startActivity(intent)
-            finish()
-        }
-
-        btnTriangulo.setOnClickListener {
-            val intent = Intent(this@CirculoVista, MainActivity::class.java)
-
-            startActivity(intent)
-            finish()
-        }
-
-        btnPentagono.setOnClickListener {
-            val intent = Intent(this@CirculoVista, PentagonoVista::class.java)
-
+        btnregresar.setOnClickListener {
+            val intent = Intent(this, MenuFiguras::class.java)
             startActivity(intent)
             finish()
         }
     }
 
     override fun showAreaCirculo(area: Float) {
-        txvRes.text = "El área del Rectangulo es: ${area}"
+        txvRes.text = "El área del circulo es: ${area}"
     }
 
     override fun showPerimetroCirculo(perimetro: Float) {
-        txvRes.text = "El área del Perimetro es: ${perimetro}"
+        txvRes.text = "El Perimetro del circulo es: ${perimetro}"
     }
 
     override fun showError(smg: String) {

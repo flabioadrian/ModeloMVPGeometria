@@ -10,10 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tirangulo4b.Contrato.TrianguloContract
+import com.example.tirangulo4b.Vista.MenuFiguras
 import com.example.tirangulo4b.Presentador.TrianguloPresentador
 import com.example.tirangulo4b.R
 
-class MainActivity : AppCompatActivity(), TrianguloContract.Vista {
+class TrianguloVista : AppCompatActivity(), TrianguloContract.Vista {
 
     private lateinit var txvRes: TextView
     private lateinit var trianguloPresentador: TrianguloContract.Presentador
@@ -21,20 +22,17 @@ class MainActivity : AppCompatActivity(), TrianguloContract.Vista {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.layout_campos_triangulo)
 
         // Elementos del triángulo
         val txtl1 = findViewById<EditText>(R.id.lado1)
         val txtl2 = findViewById<EditText>(R.id.lado2)
         val txtl3 = findViewById<EditText>(R.id.lado3)
 
-        val btnRectangulo = findViewById<Button>(R.id.btnRectangulo)
-        val btnCirculo = findViewById<Button>(R.id.btnCirculo)
-        val btnPentagono = findViewById<Button>(R.id.btnPentagono)
-
         val btnArea = findViewById<Button>(R.id.btnArea)
         val btnPerimetro = findViewById<Button>(R.id.btnPerimetro)
         val btnTipo = findViewById<Button>(R.id.btnTipo)
+        val btnregresar = findViewById<Button>(R.id.regresar)
 
         txvRes = findViewById<TextView>(R.id.txtResultado)
 
@@ -69,29 +67,13 @@ class MainActivity : AppCompatActivity(), TrianguloContract.Vista {
             trianguloPresentador.tipo(l1, l2, l3)
         }
 
-        btnRectangulo.setOnClickListener {
-            val intent = Intent(this@MainActivity, RectanguloVista::class.java)
-
-            startActivity(intent)
-            finish()
-        }
-
-        btnCirculo.setOnClickListener {
-            val intent = Intent(this@MainActivity, CirculoVista::class.java)
-
-            startActivity(intent)
-            finish()
-        }
-
-        btnPentagono.setOnClickListener {
-            val intent = Intent(this@MainActivity, PentagonoVista::class.java)
-
+        btnregresar.setOnClickListener {
+            val intent = Intent(this, MenuFiguras::class.java)
             startActivity(intent)
             finish()
         }
     }
 
-    // Métodos del triángulo
     override fun showArea(area: Float) {
         txvRes.text = "El área del triángulo es: ${area}"
     }

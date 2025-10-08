@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Vista.MainActivity">
+    tools:context=".Vista.TrianguloVista">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,6 +24,12 @@
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/regresar"
+            android:text="Regresar"/>
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -31,35 +37,6 @@
             android:id="@+id/imageView"
             android:layout_marginBottom="16dp"
             android:contentDescription="Imagen de triángulo" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="24dp">
-
-            <Button
-                android:id="@+id/btnRectangulo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rectangulo"
-                android:layout_marginEnd="10dp"/>
-
-            <Button
-                android:id="@+id/btnCirculo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="Circulo"/>
-
-            <Button
-                android:id="@+id/btnPentagono"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pentagono"
-                android:layout_marginEnd="10dp"/>
-        </LinearLayout>
 
         <EditText
             android:id="@+id/lado1"

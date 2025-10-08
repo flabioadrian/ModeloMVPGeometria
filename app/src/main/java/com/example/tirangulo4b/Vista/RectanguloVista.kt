@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tirangulo4b.Contrato.RectanguloContract
+import com.example.tirangulo4b.Vista.MenuFiguras
 import com.example.tirangulo4b.Presentador.RectanguloPresentador
 import com.example.tirangulo4b.R
 
@@ -27,13 +28,10 @@ class RectanguloVista : AppCompatActivity(), RectanguloContract.Vista {
         val txtl1 = findViewById<EditText>(R.id.baseRectangulo)
         val txtl2 = findViewById<EditText>(R.id.alturaRectangulo)
 
-        val btnPentagono = findViewById<Button>(R.id.btnPentagono)
-        val btnCirculo = findViewById<Button>(R.id.btnCirculo)
-        val btnTriangulo = findViewById<Button>(R.id.btnTriangulo)
-
         val btnArea = findViewById<Button>(R.id.btnAreaCuadrado)
         val btnPerimetro = findViewById<Button>(R.id.btnPerimetroCuadrado)
         val btnTipo = findViewById<Button>(R.id.btnVerificar)
+        val btnregresar = findViewById<Button>(R.id.regresar)
 
 
         txvRes = findViewById<TextView>(R.id.txtResultado)
@@ -66,23 +64,8 @@ class RectanguloVista : AppCompatActivity(), RectanguloContract.Vista {
             rectanguloPresentador.calcularPerimetroRectangulo(base, altura)
         }
 
-        btnCirculo.setOnClickListener {
-            val intent = Intent(this@RectanguloVista, CirculoVista::class.java)
-
-            startActivity(intent)
-            finish()
-        }
-
-        btnTriangulo.setOnClickListener {
-            val intent = Intent(this@RectanguloVista, MainActivity::class.java)
-
-            startActivity(intent)
-            finish()
-        }
-
-        btnPentagono.setOnClickListener {
-            val intent = Intent(this@RectanguloVista, PentagonoVista::class.java)
-
+        btnregresar.setOnClickListener {
+            val intent = Intent(this, MenuFiguras::class.java)
             startActivity(intent)
             finish()
         }
@@ -97,7 +80,7 @@ class RectanguloVista : AppCompatActivity(), RectanguloContract.Vista {
     }
 
     override fun showPerimetroRectangulo(perimetro: Float) {
-        txvRes.text = "El área del Perimetro es: ${perimetro}"
+        txvRes.text = "El Perimetro del Rectangulo es: ${perimetro}"
     }
 
     override fun showError(smg: String) {
